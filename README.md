@@ -29,7 +29,7 @@
 - [ ] Subclassing (Almost all user interface code will be a subclass of something.)
 - [ ] Singleton (This one can definitely be abused… use sparingly.)
 
-### UX/UI
+### [UX/UI] (https://github.com/xiaosongshu/everything-iOS/blob/master/README.md#uxui-1)
 
 - [ ] Difference between mockups and wireframes
 
