@@ -129,17 +129,16 @@
     - [ ] **AFNetworking** - Block based networking library, so easy to use and so powerful.
 - [ ] Grand Central Dispatch (GCD, NSOperationQueue)
     - [ ] GCD
-```
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                        ^(void) {
-                        // Your code
-                            dispatch_async(dispatch_get_main_queue(), ^(void) {
-                            // Now you can interact with the UI
-                            });
-                        });
-```
     - [ ] Don’t forgot to switch back to the main thread before doing anything with the UI
     - [ ] Good explanation of GCD, including making your own queues: http://www.fieryrobot.com/blog/2010/06/27/a-simple-job-queue-with-grand-central-dispatch/
+```
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+    // Your code
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+        // Now you can interact with the UI
+        });
+});
+```
 - [ ] Persistence (NSCoding, NSUserDefaults, CoreData)
     - [ ] **NSCoding**
     - [ ] **NSUserDefaults**
