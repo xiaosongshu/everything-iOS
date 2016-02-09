@@ -1,4 +1,4 @@
-## Table Of Contents
+**Table Of Contents**
 
 ### [Basic CS Knowledge / OOP] (https://github.com/xiaosongshu/everything-iOS/blob/master/README.md#basic-cs-knowledge--oop-1)
 
@@ -47,10 +47,10 @@
 - http://www.alloc-init.com/2016/01/how-to-become-a-developer-1/
 - https://www.reddit.com/r/iOSProgramming/comments/3zeddx/quitting_my_job_to_polish_my_ios_coding_skills/cyowd3g
 
-## Notes 
-### Basic CS Knowledge / OOP
+**Notes** 
+## Basic CS Knowledge / OOP
 
-- [ ] Harvard CS50 courses on Youtube
+- [ ] [Harvard CS50 courses on Youtube] (https://www.youtube.com/playlist?list=PLhQjrBD2T383Xfn0zECHrOTpfOSlptPAB)
 - [ ] Object Oriented Programming
     - [ ] **Abstraction** - the process of reducing objects to its essential characteristics. Used to reduce complexity and increase efficiency
     - [ ] **Automatic Reference Counting (ARC)** - manages object ownership automatically
@@ -89,7 +89,7 @@
 - [ ] Algorithms
     - [ ] https://docs.google.com/document/d/1lOelviSSEf7kLbPxKRAfZ-dac4-Lj_kzyPsNGprYs48/edit?ts=56b40d14
 
-### Frameworks and API
+## Frameworks and API
 
 - [ ] Properties
     - [ ] **Strong Property (default)** - creates owning relationship
@@ -138,23 +138,23 @@
                             });
                         });
 ```
-        - [ ] Don’t forgot to switch back to the main thread before doing anything with the UI
-        - [ ] Good explanation of GCD, including making your own queues, http://www.fieryrobot.com/blog/2010/06/27/a-simple-job-queue-with-grand-central-dispatch/
+    - [ ] Don’t forgot to switch back to the main thread before doing anything with the UI
+    - [ ] Good explanation of GCD, including making your own queues: http://www.fieryrobot.com/blog/2010/06/27/a-simple-job-queue-with-grand-central-dispatch/
 - [ ] Persistence (NSCoding, NSUserDefaults, CoreData)
     - [ ] **NSCoding**
     - [ ] **NSUserDefaults**
     - [ ] **Core Data**
         - [ ] What is it? - framework that manages an object graph. Used to store data into an Sqlite file.
-        - [ ] Core Data Stack - includes managed object model, persistent store coordinator, and one or more managed object contexts
-        - [ ] Managed Object Model - The data model that contains information about the models or entities of the object graph, what attributes they have, and how they relate to one another
-        - [ ] Persistent Store Coordinator - persist data to disk and makes sure persistent store and data model are compatible. Takes care of loading, saving, and caching.
-        - [ ] Managed Object Context - manages a collection of model objects, instances of NSManagegedObject, and keeps a reference to a persistent store coordinator
-        - [ ] NSManagedObject - a record in Core Data’s backing store (like a row in a database table)
-            - [ ] NSEntityDescription - includes information about managed object (entity, attributes, relationships)
-        - [ ] NSFetchedResultsController - class that helps keep core data and the user interface synchronized through notifications posted by the managed object context
-        - [ ] Managed Object - the objects that store data. For each new record, a new managed object is created to store the data.
-        - [ ] Persistence Store Coordinator - central object that hold a reference to a managed object model. Never access it directly
-        - [ ] Managed Object Context - maintains status of objects in relation to data store and manages relationships between managed objects defined by the managed object model.
+        - [ ] **Core Data Stack** - includes managed object model, persistent store coordinator, and one or more managed object contexts
+        - [ ] **Managed Object Model**  - The data model that contains information about the models or entities of the object graph, what attributes they have, and how they relate to one another
+        - [ ] **Persistent Store Coordinator**  - persist data to disk and makes sure persistent store and data model are compatible. Takes care of loading, saving, and caching.
+        - [ ] **Managed Object Context**  - manages a collection of model objects, instances of NSManagegedObject, and keeps a reference to a persistent store coordinator
+        - [ ] **NSManagedObject**  - a record in Core Data’s backing store (like a row in a database table)
+            - [ ] **NSEntityDescription**  - includes information about managed object (entity, attributes, relationships)
+        - [ ] **NSFetchedResultsController**  - class that helps keep core data and the user interface synchronized through notifications posted by the managed object context
+        - [ ] **Managed Object**  - the objects that store data. For each new record, a new managed object is created to store the data.
+        - [ ] **Persistence Store Coordinator**  - central object that hold a reference to a managed object model. Never access it directly
+        - [ ] **Managed Object Context**  - maintains status of objects in relation to data store and manages relationships between managed objects defined by the managed object model.
 - [ ] Memory Management (what Retain Cycles are and ARC fundamentals)
 - [ ] Blocks
     - [ ] There is a great tutorial on blocks here. There are still times when delegates/protocols or NSNotifications make sense, but blocks should be your first consideration.
@@ -162,12 +162,12 @@
 - [ ] Dependency Management
 -   [ ] CocoaPods
 
-### Development Patterns / Design Principles
+## Development Patterns / Design Principles
 
-- [ ] Delegation - one object acts on behalf of, or in coordination with, another object
-- [ ] MVC - Model (Data), View (UI), Controller (Gateway)
-- [ ] Subclassing -----
-- [ ] Singleton - design pattern where you declare and use a single instance of an object
+- [ ] **Delegation** - one object acts on behalf of, or in coordination with, another object
+- [ ] **MVC** - Model (Data), View (UI), Controller (Gateway)
+- [ ] **Subclassing** 
+- [ ] **Singleton** - design pattern where you declare and use a single instance of an object
 ```
 Carrying on with GCD, dispatch_once is really useful:
     + (MyClass *)sharedClass {
@@ -181,10 +181,12 @@ return _shared;
 ```
 
 You'll be doing this a bit, especially when you see how costly it is to create things like NSDateFormatter many times.
-- [ ] Target-Action - One object send message to another object when event occurs
+- [ ] **Target-Action** - One object send message to another object when event occurs
 
+## UX/UI
+- [ ] Difference between mockups and wireframes
 
-###  Tools
+##  Tools
 
 - [ ] Git
 - [ ] Analyze
@@ -195,7 +197,7 @@ You'll be doing this a bit, especially when you see how costly it is to create t
     - [ ] **Allocations** - shows you details on all objects created and the memory that backs them.
     - [ ] **Leaks** - remembers all objects allocated and periodically checks if they’re still referenced
 
-### Apple Submission
+## Apple Submission
 
 - [ ] Workflow
     - [ ] Create Certificate (Development + Distribution)
