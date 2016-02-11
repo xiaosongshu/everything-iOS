@@ -1,6 +1,6 @@
 ##Table Of Contents
 
-### Basic CS Knowledge / OOP / Algorithms
+### [Introduction to Computer Science / Object Oriented Programming / Algorithms] (https://github.com/xiaosongshu/everything-iOS#introduction-to-computer-science)
 - [ ] Harvard CS50 courses on Youtube 
 - [ ] Object Oriented Programming
 - [ ] Algorithms
@@ -11,19 +11,19 @@
 - [ ] App Life Cycle
 - [ ] View Controller Life Cycle
 - [ ] UIKit 
-    - [ ] (UITableView, UIButton, UINavigationController, GestureRecognizers)
+    - [ ] UITableView, UIButton, UINavigationController, GestureRecognizers
 - [ ] Interface Builder 
-    - [ ] (Storyboards, Segues, and the odd .xib)
+    - [ ] Storyboards, Segues, and the odd .xib
 - [ ] Foundation Types 
-    - [ ] (NSArray, NSDictionary, NSString) and their Swift counterparts (Array, Dictionary and String)
+    - [ ] NSArray, NSDictionary, NSString) and their Swift counterparts (Array, Dictionary and String
 - [ ] Networking
-    - [ ] HTTP API (NSURLSession, Basic REST API concepts, JSON Parsing with NSJSONSerialization)
+    - [ ] HTTP API: NSURLSession, Basic REST API concepts, JSON Parsing with NSJSONSerialization
 - [ ] Grand Central Dispatch 
-    - [ ] (GCD, NSOperationQueue)
+    - [ ] GCD, NSOperationQueue
 - [ ] Persistence 
-    - [ ] (NSCoding, NSUserDefaults, CoreData)
+    - [ ] NSCoding, NSUserDefaults, CoreData
 - [ ] Memory Management 
-    - [ ] (what Retain Cycles are and ARC fundamentals)
+    - [ ] What Retain Cycles are and ARC fundamentals
 - [ ] Blocks
 - [ ] Dependency Management
 - [ ] CocoaPods
@@ -31,13 +31,13 @@
 ### [Development Patterns / Design Principles] (https://github.com/xiaosongshu/everything-iOS/blob/master/README.md#development-patterns--design-principles-1)
 
 - [ ] Delegation 
-    - [ ] (This is sort of the workhorse of most iOS API’s, you should DEFINITELY understand this)
+    - [ ] This is sort of the workhorse of most iOS API’s, you should DEFINITELY understand this
 - [ ] Model View Controller
-    - [ ] (MVC, I don’t think Apple did the best job of encouraging best MVC separation, but it’s an important pattern that can help improve your code if you take the time to implement it properly. Also, it’s pretty much guaranteed to be on any iOS job interviewer’s question list.)
+    - [ ] MVC, I don’t think Apple did the best job of encouraging best MVC separation, but it’s an important pattern that can help improve your code if you take the time to implement it properly. Also, it’s pretty much guaranteed to be on any iOS job interviewer’s question list.
 - [ ] Subclassing 
-    - [ ] (Almost all user interface code will be a subclass of something.)
+    - [ ] Almost all user interface code will be a subclass of something.
 - [ ] Singleton 
-    - [ ] (This one can definitely be abused… use sparingly.)
+    - [ ] This one can definitely be abused… use sparingly.
 
 ### [UX/UI] (https://github.com/xiaosongshu/everything-iOS/blob/master/README.md#uxui-1)
 
