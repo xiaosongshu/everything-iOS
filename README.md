@@ -58,6 +58,7 @@
 - https://www.reddit.com/r/iOSProgramming/comments/3zeddx/quitting_my_job_to_polish_my_ios_coding_skills/cyowd3g
 - http://cognitivedesign.com/papers/understanding-delegation-in-ios.html
 - http://cognitivedesign.com/papers/understanding-blocks-in-ios.html
+- http://programmers.stackexchange.com/questions/190359/what-is-delegation-and-why-is-it-important-in-ios-programming
 
 ## Introduction to Computer Science
 - [ ] [Harvard CS50 courses on Youtube] (https://www.youtube.com/playlist?list=PLhQjrBD2T383Xfn0zECHrOTpfOSlptPAB)
@@ -71,10 +72,6 @@
 #### Atomic vs Nonatomic
 - [ ] **Definition** 
     - [ ] Atomic locks the object to prevent getter and setter to be called at the same time when more than one thread. Is default and has overhead.
-
-#### Blocks
-- [ ] **Definition** 
-    - [ ] A chunk of code that can take arguments and return values. It can be passed as an argument if a method accepts blocks.
 
 #### Category
 - [ ] **Definition** 
@@ -92,10 +89,6 @@
 - [ ] **Definition** 
     - [ ] Used to instantiate a class, optionally with properties.
 
-#### Delegate
-- [ ] **Definition** 
-    - [ ] Allows one object to act in behalf, or in coordination, with another
-
 #### Encapsulation
 - [ ] **Definition**
     - [ ] Hiding details of an object from everything else
@@ -103,8 +96,11 @@
 #### enum
 - [ ] **Definition** 
     - [x] Lets you define a set of constants. 
-- [ ] Use typedef to not have to use “enum” all the time.
-    - [x] A **typedef** creates an alias, or alternative name, for an existing type that the compiler will recognize as being the same as that type. Normally the syntax for a typedef is this: `typedef [existingtypename] [newalias];`
+    - [ ] Use typedef to not have to use “enum” all the time.
+
+#### typedef
+- [x] **Definition **
+    - [x] A typedef creates an alias, or alternative name, for an existing type that the compiler will recognize as being the same as that type. Normally the syntax for a typedef is this: `typedef [existingtypename] [newalias];`
     - [x] Thus, if we want "count_raccoons" to be an alias for a C integer type, we would use the following: `typedef int count_raccoons;`
     - [x] However, the syntax for a typedef that involves blocks is different. A typedef for a block uses syntax designed for what is known in C as a function pointer, which is: `typedef [returntype] [newalias] [argumenttype(s)];`
     - [x] `typedef void (^ChooseYesOrNoCallbackBlock) (BOOL);` This says that a new alias ChooseYesOrNoCallbackBlock is defined for a block that does not return a value, and accepts a single parameter of type Boolean. Once this typedef is included, we can refer to the block as just ChooseYesOrNoCallbackBlock in both the property and method declarations.
@@ -174,13 +170,29 @@
 #### Protocols
 
 - [ ] **Definition**
-    - [x]  Protocols are groups of related properties and methods that can be implemented by any class (list of methods that a delegate must or may implemented to get messages from a delegating object)
+    - [x]  Protocols are groups of related properties and methods that can be implemented by any class (list of methods that a delegate must or may implement to get messages from a delegating object)
 
 - [ ] **Notes**
     - [x] Another way to look at a protocol is by use of the term that is used in Java and C++ for the same idea, which is interface. A protocol specifies the interface between the delegating object and the delegate object.
-    - [x] Note that Objective-C is a single-inheritance language--a class (and thus its objects) can only inherit from a single superclass. Delegation provides a little of what multiple inheritance languages have by allowing inheritance from something other than the superclass of a class.
     - [x] Protocols can also conform to a protocol
-    - [x] The next line in the protocol lists a single delegate method. I could have put a line above it, @required, to indicate that it is a required method. This would mean that the delegate object, to conform to the protocol, MUST implement the method. I did not actually have to do that because @required is the default. If the method is optional, that can be indicated by using the directive @optional. When a @required or @optional directive is included, this says that all methods listed after that directive are specified as indicated until the opposite directive is encountered. @end, obviously, indicates the end of the definition of the protocol.
+    - [x] Protocols are `@required` by default: the next line in the protocol lists a single delegate method. I could have put a line above it, @required, to indicate that it is a required method. This would mean that the delegate object, to conform to the protocol, MUST implement the method. I did not actually have to do that because @required is the default. If the method is optional, that can be indicated by using the directive @optional. When a @required or @optional directive is included, this says that all methods listed after that directive are specified as indicated until the opposite directive is encountered. @end, obviously, indicates the end of the definition of the protocol.
+    
+```objective-c
+ChooseYesOrNoView.h
+#import 
+
+@protocol ChooseYesOrNoViewDelegate <NSObject>
+- (void) chooseYesOrNoResponse: (BOOL) response;
+@end
+
+@interface ChooseYesOrNoView : UIView
+
+@property (nonatomic, weak) id delegate;
+
+- (ChooseYesOrNoView *) display;
+
+@end
+```
 
 #### Serialization
 - [ ] **Definition** 
@@ -236,7 +248,7 @@
 - [ ] GCD
 - [ ] Don’t forgot to switch back to the main thread before doing anything with the UI
 - [ ] Good explanation of GCD, including making your own queues: http://www.fieryrobot.com/blog/2010/06/27/a-simple-job-queue-with-grand-central-dispatch/
-```
+```objective-c
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
     // Your code
         dispatch_async(dispatch_get_main_queue(), ^(void) {
@@ -266,14 +278,12 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(
     - [ ] Automatic Reference Counting (ARC) demanages object ownership automatically
 - [ ] **Properties**
     - [ ] *Strong Property (default)* - creates owning relationship
-    - [x]  *Weak Propperty (default)* - creates owning relationship
     - [x]  *Weak Property* - relationship without ownership 
     - [ ] *Copy* - Creates copy and takes ownership of that. Will freeze the object at the value given.
     - [ ] *Retain Cycle* - form of memory leak where two objects own each other and neither are destroyed
     - [ ] *Dangling Pointer* - points to an object that no longer exists.
     - [ ] *Unsafe_unretained* - similar to weak, doesn’t set value to nil if reference is destroyed. Should only be used when weak isn’t supported
     - [x] *Assign* - has nothing to do with memory management. Used to be a way to implement weak properties, should not be used anymore.
-erty** - relationship without ownership 
     - [ ] *Copy* - Creates copy and takes ownership of that. Will freeze the object at the value given.
     - [ ] *Retain Cycle* - form of memory leak where two objects own each other and neither are destroyed
     - [ ] *Dangling Pointer* - points to an object that no longer exists.
@@ -282,11 +292,14 @@ erty** - relationship without ownership
 
 #### Blocks
 - [ ] **Definition**
-    - [x] A block, in its simplest form, is a piece of code that begins with a carat character and is surrounded by curly braces, as seen below:
-```^ {
-    / / This is a block
-     }```
+    - [x] A chunk of code that can take arguments and return values. It can be passed as an argument if a method accepts blocks.
     - [x] A block is not only a piece of code, but it can be assigned to a variable.
+    - [x] A block, in its simplest form, is a piece of code that begins with a carat character and is surrounded by curly braces, as seen below:
+```objective-c
+^ {
+    / / This is a block
+     }
+```
 - [ ] **Use-cases**
     - [x] Blocks are frequently used in iOS API calls to pass an entire piece of code, rather than just a value, as a parameter. For example, they are used in animation APIs to define aspects of a target view that the system will end up displaying when the animation has been completed. In Grand Central Dispatch, code packaged as a block can be put into a queue and executed, say on a background thread.
 	- [x] Blocks can also be used in callbacks that occur as a result of events, much like delegates are. In some cases, blocks are arguably simpler to use delegation, and are preferred by many programmers.
@@ -304,30 +317,64 @@ erty** - relationship without ownership
 - [ ] **Definition**
     - [x] A delegate is an object that acts on behalf of, or in coordination with, another object when that object encounters an event in a program
 - [ ] **Usecases**
-    1. *calback mechanism : UIAlertView*
+    1. *calback mechanism* : `UIAlertView`
         - [x] Delegation is used when dealing with events, and in its simplest form, it is just a callback mechanism: A program can start something up, and then go on to do other things. If and when there is a response to what was started up, it comes in the form of a message that causes the execution of a method that can then deal with the response. Even if the program starts something up but then does nothing but wait, it is a convenient way to organize things. 
         - [x] The important idea here is that delegation allowed you to set up an off-the-shelf object--an instance of UIAlertView--that as the result of an event (user tapping a button) calls a method of the object that set it up so that you can do what you like with the result of the event 
         - [x] `((void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex)`
-    2. *complex APIs that allow more subtle customization of UI Elements : UITableViews*
-    	- [x] number of rows & numer of sections is part of UITableViewDataSource Protocol rather than UITableViewDelegate Protocol
+    2. *complex APIs that allow more subtle customization of UI Elements, namely for supplying data to and responding to interactions from an object* : `UITableView`, `UIPickerView`, `UICollectionView`
+    	- [x] number of rows & numer of sections is part of `UITableViewDataSource` Protocol rather than `UITableViewDelegate` Protocol
     	- [x] This shows an example of a common thing that is done in delegate methods. It is basically setting a parameter for use by the delegating object, and, when necessary, using information that is passed to it by the delegating object. This is quite different from the simple callback, where information is passed only from the delegating object to the delegate.
-    	- [x] The method for providing data is tableView:cellForRowAtIndexPath
+    	- [x] The method for providing data is `tableView:cellForRowAtIndexPath`
     	- [x] Very few of the methods associated with a table view are required. Of the 32 methods defined as delegate methods, none are required. Of the 11 methods defined as data source methods, only 2 are required (now of rows and the data for a row).
+    	- [x] For a concrete example, look at the `UITableViewDelegate protocol`. These methods don't make sense for a table view to implement directly, because actions for selecting a table view row will be different in each app and maybe in each table view. The delegate has a method `-tableView:didSelectRowAtIndexPath:` so you can create an object that handles row selection without subclassing the table view for every separate action you want to implement. Hence the controller acts as a delegate (on behalf of the `UITableView`)
 
-    3. *communicate between different objects in the app : info passed from a child object to its parent*
-    	- [x] The main difference here from UIAlertView is that this is not an off-the-shelf object from the iOS API, but a custom object, with a custom protocol and custom delegate method, that was created from scratch.
+    3. *communicate/passing information between different objects in the app (ie. children back to its parent): You can very easily create your own protocols and sign up your own objects to follow them*
+     	- [x] Normally passing info from parent to child, can use property, but what about from child back to parent? Ie. simply want to know when a button is pressed. 
+     	- [x] The main difference here from `UIAlertView` is that this is not an off-the-shelf object from the iOS API, but a custom object, with a custom protocol and custom delegate method, that was created from scratch.
+     	- [ ] Simply create a new protocol in the child view controller
+
+```objective-c
+@protocol MyChildDelegate
+- (void)buttonWasTappedInChild:(MyChildViewController *)childViewController;
+@end
+
+@interface MyChildViewController : UIViewController
+
+@property (weak, nonatomic) id <MyChildDelegate> delegate;
+
+@end 
+```
+
+In MyChildViewController, when your button is tapped, simply check if your delegate responds to the delegate message (if it's required and your delegate doesn't implement the method, you'll crash. You can make the method @optional if you need to) and send it:
+
+```objective-c
+- (IBAction)someButtonTapped:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(buttonWasTappedInChild:)]) {
+        [self.delegate buttonWasTappedInChild:self];
+    }
+}
+```
+Then set the delegate of your MyChildViewController to self and implement `- (void)buttonWasTappedInChild:(MyChildViewController *)childViewController` in your parent view controller. BOOM! You have information passed from a child up to the parent. The relationship between the two objects doesn't even need to be as close as parent/child. It's a service contract, so as long as the object signing up holds up its end of the bargain by implementing the required methods, you're golden!
+
+NOTE: Delegates should be weak/assign properties, otherwise you'll enter a retain cycle where neither object can be deallocated.
+
+
 
 
 - [ ] **Who's the Delegate?**
     - [x] The helper object you are using is, very often, the delegating object, and in such a case your program would be the delegate object, also known as just the delegate. This is often the case for the helper objects that are part of the iOS API.
     - [x] The UIAlertView object is the delegating object, as is common with the iOS API objects, and, as suggested when delegate was set to "self", the object that set this up, MainViewController, is the delegate (object).
+    - [ ] An object that employs delegation can only have one `delegate` at a time, whereas multiple objects can sign up for the same `NSNotisfication`
+
+- [ ] **Notes**
+    - [x] Objective-C is a single-inheritance language--a class (and thus its objects) can only inherit from a single superclass. Delegation provides a little of what multiple inheritance languages have by allowing inheritance from something other than the superclass of a class.
 
 #### MVC - Model (Data), View (UI), Controller (Gateway)
 
 #### Subclassing
 
 #### Singleton - design pattern where you declare and use a single instance of an object
-```
+```objective-c
 Carrying on with GCD, dispatch_once is really useful:
     + (MyClass *)sharedClass {
 static MyClass *_shared = nil;
